@@ -134,9 +134,14 @@ body {
 .current-language {
   display: flex;
   align-items: center;
+  background: transparent;
   padding: 5px 10px;
   border: 1px solid var(--text-color);
   border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
   transition: border-color 0.3s ease;
 }
 
@@ -169,7 +174,8 @@ body {
   z-index: 1000;
 }
 
-.language-selector:hover .language-dropdown {
+.language-selector.open .language-dropdown,
+.language-selector:focus-within .language-dropdown {
   display: block;
 }
 
@@ -184,6 +190,14 @@ body {
 
 .language-dropdown a:hover {
   color: var(--hover-color);
+}
+
+.navbar-item:focus-visible,
+.current-language:focus-visible,
+.language-dropdown a:focus-visible,
+.contact-button:focus-visible {
+  outline: 2px solid var(--hover-color);
+  outline-offset: 2px;
 }
 
 .hero {
@@ -670,11 +684,16 @@ body {
 
   .language-dropdown {
     position: static;
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
     box-shadow: none;
     padding: 0;
+  }
+
+  .language-selector.open .language-dropdown,
+  .language-selector:focus-within .language-dropdown {
+    display: flex;
   }
 
   .language-dropdown a {

@@ -5,18 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸</title>
-    <meta name="description" content="pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。">
+    <title id="page-title">pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸</title>
+    <meta id="meta-description" name="description" content="pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。">
     <meta name="keywords" content="pap.er, Mac壁纸, macOS壁纸, 高清壁纸, 桌面背景, 每日壁纸, 壁纸应用">
-    <meta property="og:title" content="pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸">
-    <meta property="og:description" content="pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。">
-    <meta property="og:image" content="./assets/screenshots/720p/s00047.webp">
-    <meta property="og:url" content="https://paper.meiyuan.in">
+    <meta id="og-title" property="og:title" content="pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸">
+    <meta id="og-description" property="og:description" content="pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。">
+    <meta id="og-image" property="og:image" content="https://paper.meiyuan.in/assets/screenshots/720p/s00047.webp">
+    <meta id="og-url" property="og:url" content="https://paper.meiyuan.in/?lang=zh-Hans-CN">
+    <meta id="og-locale" property="og:locale" content="zh_CN">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸">
-    <meta name="twitter:description" content="pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。">
-    <meta name="twitter:image" content="./assets/screenshots/webp/s00047.webp">
+    <meta id="twitter-title" name="twitter:title" content="pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸">
+    <meta id="twitter-description" name="twitter:description" content="pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。">
+    <meta id="twitter-image" name="twitter:image" content="https://paper.meiyuan.in/assets/screenshots/720p/s00047.webp">
+    <link rel="canonical" id="canonical-link" href="https://paper.meiyuan.in/?lang=zh-Hans-CN">
+    <link rel="alternate" hreflang="zh-CN" href="https://paper.meiyuan.in/?lang=zh-Hans-CN">
+    <link rel="alternate" hreflang="zh-TW" href="https://paper.meiyuan.in/?lang=zh-Hant">
+    <link rel="alternate" hreflang="en" href="https://paper.meiyuan.in/?lang=en">
+    <link rel="alternate" hreflang="ja" href="https://paper.meiyuan.in/?lang=ja">
+    <link rel="alternate" hreflang="ko" href="https://paper.meiyuan.in/?lang=ko">
+    <link rel="alternate" hreflang="x-default" href="https://paper.meiyuan.in/">
     <link rel="apple-touch-icon" href="./assets/icon_128x128@2x.png">
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
     
@@ -30,39 +38,39 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <a href="#" class="logo-link">
+                <a href="#hero" class="logo-link">
                     <img src="./assets/logo.png" alt="pap.er Logo" class="logo">
                 </a>
-                <a href="#" class="brand-text">
+                <a href="#hero" class="brand-text">
                     <span class="pap-er-brand">pap.er</span>
                     <span id="brand-description" class="brand-description">优雅壁纸</span>
                 </a>
-                <button class="navbar-toggle" aria-label="Toggle navigation">
+                <button class="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
-            <div class="navbar-menu">
+            <div class="navbar-menu" id="navbar-menu">
                 <a href="#features" class="navbar-item">主要功能</a>
                 <a href="#user-reviews" class="navbar-item">用户评价</a>
                 <a href="#faq" class="navbar-item">常见问题</a>
                 <a id="contact-link" href="#contact" class="navbar-item">联系我们</a>
                 <div class="navbar-item language-selector">
-                    <span class="current-language">
+                    <button type="button" class="current-language" aria-haspopup="true" aria-expanded="false" aria-controls="language-dropdown">
                         <svg class="globe-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="2" y1="12" x2="22" y2="12"></line>
                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                         </svg>
                         <span class="language-text">Language</span>
-                    </span>
-                    <div class="language-dropdown">
-                        <a href="#" data-lang="zh-Hans-CN">简体中文</a>
-                        <a href="#" data-lang="zh-Hant">繁體中文</a>
-                        <a href="#" data-lang="en">English</a>
-                        <a href="#" data-lang="ja">日本語</a>
-                        <a href="#" data-lang="ko">한국어</a>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown" role="menu">
+                        <a href="?lang=zh-Hans-CN" data-lang="zh-Hans-CN" lang="zh-Hans-CN" role="menuitem">简体中文</a>
+                        <a href="?lang=zh-Hant" data-lang="zh-Hant" lang="zh-Hant" role="menuitem">繁體中文</a>
+                        <a href="?lang=en" data-lang="en" lang="en" role="menuitem">English</a>
+                        <a href="?lang=ja" data-lang="ja" lang="ja" role="menuitem">日本語</a>
+                        <a href="?lang=ko" data-lang="ko" lang="ko" role="menuitem">한국어</a>
                     </div>
                 </div>
             </div>
@@ -77,7 +85,7 @@
                 <img src="./assets/download-badge/zh-Hans-CN.svg" alt="在 Mac App Store 上下载" id="download-badge">
             </a>
             <p class="download-links">
-                <a href="./app/pap.er_v5.3.1.dmg" id="direct-download">下载最新版 v5.3.1 (2024-11-15)</a> | <a href="./app/pap.er_v3.7.dmg" id="old-version-download">下载老版本（兼容 macOS 10.13+）</a>
+                <a href="./app/pap.er_v5.3.1.dmg" id="direct-download">下载最新版 v5.3.1</a> | <a href="./app/pap.er_v3.7.dmg" id="old-version-download">下载老版本（兼容 macOS 10.13+）</a>
             </p>
         </div>
     </header>
@@ -99,16 +107,16 @@
             </noscript>
             <div class="swiper-wrapper" id="screenshot-wrapper">
                 <div class="swiper-slide">
-                    <img src="./assets/screenshots/720p/s00051.webp" alt="Screenshot 1" loading="eager" fetchpriority="high" style="background: #f0f0f0;"> <!-- 占位符 -->
+                    <img src="./assets/screenshots/720p/s00051.webp" alt="pap.er 应用截图预览" loading="eager" fetchpriority="high" style="background: #f0f0f0;"> <!-- 占位符 -->
                 </div>
                 <div class="swiper-slide">
-                    <img src="./assets/screenshots/720p/s00122.webp" alt="Screenshot 2" loading="lazy" style="background: #f0f0f0;"> <!-- 占位符 -->
+                    <img src="./assets/screenshots/720p/s00122.webp" alt="pap.er 应用截图预览" loading="lazy" style="background: #f0f0f0;"> <!-- 占位符 -->
                 </div>
                 <div class="swiper-slide">
-                    <img src="./assets/screenshots/720p/s00116.webp" alt="Screenshot 3" loading="lazy" style="background: #f0f0f0;"> <!-- 占位符 -->
+                    <img src="./assets/screenshots/720p/s00116.webp" alt="pap.er 应用截图预览" loading="lazy" style="background: #f0f0f0;"> <!-- 占位符 -->
                 </div>
                 <div class="swiper-slide">
-                    <img src="./assets/screenshots/720p/s00085.webp" alt="Screenshot 4" loading="lazy" style="background: #f0f0f0;"> <!-- 占位符 -->
+                    <img src="./assets/screenshots/720p/s00085.webp" alt="pap.er 应用截图预览" loading="lazy" style="background: #f0f0f0;"> <!-- 占位符 -->
                 </div>
                 <!-- 这里的图片将由 JavaScript 动态生成 -->
             </div>
@@ -321,7 +329,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p class="copyright"><span class="pap-er-brand">©️ pap.er</span> with love, since 2017.</p>
+                <p class="copyright"><span class="pap-er-brand">©️ pap.er</span> <span id="footer-copyright-text">with love, since 2017.</span></p>
                 <div class="footer-links">
                     <a href="./privacy.html" id="footer-privacy">Privacy Policy</a>
                     <a href="./terms.html" id="footer-terms">Terms of Use</a>

@@ -2,10 +2,12 @@ export const langData = {
     "zh-Hans-CN": {
       appTitle: "专为 Mac 设计的壁纸应用",
       appDescription: "每天享受来自全球的精选高清壁纸",
+      pageTitle: "pap.er - 专业Mac壁纸应用 | 每日精选高清壁纸",
+      pageDescription: "pap.er是专为Mac设计的壁纸应用，每天提供全球精选高清壁纸。智能分类、一键设置、收藏功能，让您的Mac桌面焕然一新。",
       appRequires: "Mac应用需要macOS Big Sur (11.0.0)或更高版本。",
       brandDescription: "优雅壁纸",
       brandSlogan: "你的桌面，既是艺术画廊，也是通向世界的窗户。", 
-      directDownload: "下载最新版 v5.3.1 (2024-11-15)",
+      directDownload: "下载最新版 v5.3.1",
       oldVersionDownload: "下载老版本（兼容 macOS 10.13+）",
       features: "主要功能",
       featureEditorial: "编辑推荐",
@@ -54,10 +56,12 @@ export const langData = {
     "zh-Hant": {
       appTitle: "專為 Mac 設計的桌布應用",
       appDescription: "每天享受來自全球的精選高畫質桌布",
+      pageTitle: "pap.er - 專業Mac桌布應用 | 每日精選高畫質桌布",
+      pageDescription: "pap.er 是專為 Mac 設計的桌布應用，每天提供全球精選高畫質桌布。智慧分類、一鍵設定、收藏功能，讓您的 Mac 桌面煥然一新。",
       appRequires: "Mac應用需要macOS Big Sur (11.0.0)或更高版本。",
       brandDescription: "雅致桌布隨心換",
       brandSlogan: "你的桌面，既是藝術畫廊，也是通向世界的窗戶。",
-      directDownload: "下載最新版 v5.3.1 (2024-11-15)",
+      directDownload: "下載最新版 v5.3.1",
       oldVersionDownload: "下載舊版本（相容 macOS 10.13+）",
       features: "主要功能",
       featureEditorial: "編輯推薦",
@@ -106,6 +110,8 @@ export const langData = {
     en: {
       appTitle: "Wallpaper App Designed for Mac",
       appDescription: "Enjoy fresh and beautiful wallpapers from around the world every day",
+      pageTitle: "pap.er - Professional Mac Wallpaper App | Curated HD Wallpapers Daily",
+      pageDescription: "pap.er is a wallpaper app built for Mac, featuring handpicked high-resolution wallpapers every day. Smart categories, one-click apply, and favorites keep your desktop fresh.",
       appRequires: "Mac app requires macOS Big Sur (11.0.0) or higher.",
       brandDescription: "Elegant Desktop Wallpapers",
       brandSlogan: "Your desktop is both an art gallery and a window to the world.", 
@@ -158,6 +164,8 @@ export const langData = {
     ja: {
       appTitle: "Mac用に設計された壁紙アプリ",
       appDescription: "毎日、世界中から厳選された美しい壁紙をお楽しみください",
+      pageTitle: "pap.er - Mac向け壁紙アプリ | 毎日更新の高画質壁紙",
+      pageDescription: "pap.er は Mac 専用の壁紙アプリです。世界中から厳選した高画質壁紙を毎日お届け。カテゴリ管理、ワンクリック設定、お気に入り保存に対応しています。",
       appRequires: "MacアプリにはmacOS Big Sur (11.0.0)以上が必要です。",
       brandDescription: "洗練されたデスクトップ壁紙",
       brandSlogan: "あなたのデスクトップは、アートギャラリーであり、世界への窓です。", 
@@ -210,6 +218,8 @@ export const langData = {
     ko: {
       appTitle: "Mac용으로 설계된 배경화면 앱",
       appDescription: "매일 전 세계에서 엄선된 아름다운 배경화면을 즐기세요",
+      pageTitle: "pap.er - Mac 전용 배경화면 앱 | 매일 엄선된 고화질 배경화면",
+      pageDescription: "pap.er는 Mac을 위해 설계된 배경화면 앱으로, 매일 전 세계의 고화질 배경화면을 엄선해 제공합니다. 스마트 분류, 원클릭 적용, 즐겨찾기를 지원합니다.",
       appRequires: "Mac 앱은 macOS Big Sur (11.0.0) 이상이 필요합니다.",
       brandDescription: "세련된 배경화면",
       brandSlogan: "당신의 데스크톱은 예술 갤러리이자 세상으로 통하는 창문입니다.", 
@@ -263,26 +273,36 @@ export const langData = {
   
   export const languageConfig = {
     'zh-Hans-CN': {
+      htmlLang: 'zh-Hans-CN',
+      ogLocale: 'zh_CN',
       badgeSrc: './assets/download-badge/zh-Hans-CN.svg',
       altText: '在 Mac App Store 上下载',
       appStoreLink: 'https://apps.apple.com/cn/app/pap-er-%E4%BC%98%E9%9B%85%E5%A3%81%E7%BA%B8/id1639052102'
     },
     'zh-Hant': {
+      htmlLang: 'zh-Hant',
+      ogLocale: 'zh_TW',
       badgeSrc: './assets/download-badge/zh-Hant.svg',
       altText: '在 Mac App Store 上下載',
       appStoreLink: 'https://apps.apple.com/tw/app/pap-er-%E4%BC%98%E9%9B%85%E5%A3%81%E7%BA%B8/id1639052102'
     },
     'en': {
+      htmlLang: 'en',
+      ogLocale: 'en_US',
       badgeSrc: './assets/download-badge/en.svg',
       altText: 'Download on the Mac App Store',
       appStoreLink: 'https://apps.apple.com/us/app/pap-er-elegant-wallpaper/id1639052102'
     },
     'ja': {
+      htmlLang: 'ja',
+      ogLocale: 'ja_JP',
       badgeSrc: './assets/download-badge/ja.svg',
       altText: 'Mac App Store からダウンロード',
       appStoreLink: 'https://apps.apple.com/jp/app/pap-er-%E3%82%A8%E3%83%AC%E3%82%AC%E3%83%B3%E3%83%88%E3%81%AA%E5%A3%81%E7%B4%99/id1639052102'
     },
     'ko': {
+      htmlLang: 'ko',
+      ogLocale: 'ko_KR',
       badgeSrc: './assets/download-badge/ko.svg',
       altText: 'Mac App Store서 다운로드',
       appStoreLink: 'https://apps.apple.com/kr/app/pap-er-%EC%9A%B0%EC%95%84%ED%95%9C-%EB%B0%B0%EA%B2%BD-%ED%99%94%EB%A9%B4/id1639052102'

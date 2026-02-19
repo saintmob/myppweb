@@ -1,33 +1,53 @@
-import { updateContent, changeLanguage, initLanguageSelector, getDefaultLanguage } from './languageUtils.js';
+import { changeLanguage, initLanguageSelector, getDefaultLanguage } from './languageUtils.js';
 import { langData } from './translations.js';
 
-async function initNavbarToggle() {
+function initNavbarToggle() {
     const navbarToggle = document.querySelector('.navbar-toggle');
     const navbarMenu = document.querySelector('.navbar-menu');
+    if (!navbarToggle || !navbarMenu) {
+        return;
+    }
 
-    // 用事件委托简化事件处理
+    const setMenuOpen = (isOpen) => {
+        navbarToggle.classList.toggle('active', isOpen);
+        navbarMenu.classList.toggle('active', isOpen);
+        navbarToggle.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    navbarToggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const isOpen = navbarMenu.classList.contains('active');
+        setMenuOpen(!isOpen);
+    });
+
     document.addEventListener('click', (event) => {
-        const isToggle = navbarToggle.contains(event.target);
-        const isMenu = navbarMenu.contains(event.target);
+        if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+            setMenuOpen(false);
+        }
+    });
 
-        if (isToggle) {
-            navbarToggle.classList.toggle('active');
-            navbarMenu.classList.toggle('active');
-        } else {
-            // 无论是否点击菜单内容，都关闭汉堡菜单
-            navbarToggle.classList.remove('active');
-            navbarMenu.classList.remove('active');
+    navbarMenu.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+            setMenuOpen(false);
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            setMenuOpen(false);
         }
     });
 }
 
 function getFallbackReviews(lang) {
     const data = langData[lang] || langData['en'];
+    const defaultReviewTitle = data.reviewsTitle || 'User Review';
     return [
-        { rating: 5, title: data.reviewTitle1, content: data.review1, author: data.reviewAuthor1 },
-        { rating: 5, title: data.reviewTitle2, content: data.review2, author: data.reviewAuthor2 },
-        { rating: 5, title: data.reviewTitle3, content: data.review3, author: data.reviewAuthor3 },
-        { rating: 5, title: data.reviewTitle4, content: data.review4, author: data.reviewAuthor4 }
+        { rating: 5, title: data.reviewTitle1 || defaultReviewTitle, content: data.review1, author: data.reviewAuthor1 },
+        { rating: 5, title: data.reviewTitle2 || defaultReviewTitle, content: data.review2, author: data.reviewAuthor2 },
+        { rating: 5, title: data.reviewTitle3 || defaultReviewTitle, content: data.review3, author: data.reviewAuthor3 },
+        { rating: 5, title: data.reviewTitle4 || defaultReviewTitle, content: data.review4, author: data.reviewAuthor4 }
     ];
 }
 
@@ -101,11 +121,11 @@ function displayReviews(reviews) {
 
 async function initSwiper() {
     try {
-        console.log('开始初始化 Swiper');
+        console.log('Initializing Swiper');
         const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             spaceBetween: 30,
-            loop: true,
+            loop: false,
             autoplay: {
                 delay: 3000,
                 disableOnInteraction: false
@@ -113,10 +133,6 @@ async function initSwiper() {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
             },
             breakpoints: {
                 640: {
@@ -130,14 +146,10 @@ async function initSwiper() {
                 }
             }
         });
-        console.log('Swiper 初始化完成');
         await loadRandomScreenshots(swiper);
-        
-        // Update Swiper after loading screenshots
-        swiper.update();
-        
-        // Enable loop mode if there are enough slides
-        if (swiper.slides.length > swiper.params.slidesPerView) {
+
+        const minSlidesForLoop = typeof swiper.params.slidesPerView === 'number' ? swiper.params.slidesPerView : 1;
+        if (swiper.slides.length > minSlidesForLoop) {
             swiper.params.loop = true;
             swiper.loopCreate();
             swiper.update();
@@ -148,9 +160,10 @@ async function initSwiper() {
 }
 
 async function loadRandomScreenshots(swiper) {
-    console.log('开始加载随机截图');
     const screenshotWrapper = document.getElementById('screenshot-wrapper');
-    screenshotWrapper.innerHTML = '';
+    if (!screenshotWrapper) {
+        return;
+    }
 
     const screenshots = [];
     for (let i = 1; i <= 208; i++) {
@@ -158,28 +171,53 @@ async function loadRandomScreenshots(swiper) {
         screenshots.push(`./assets/screenshots/720p/s${num}.webp`);
     }
 
-    const shuffledScreenshots = shuffleArray(screenshots).slice(0, 8);
+    const targetSlideCount = 8;
+    const selectedScreenshots = shuffleArray([...screenshots]).slice(0, targetSlideCount);
+    const existingSlides = Array.from(screenshotWrapper.querySelectorAll('.swiper-slide'));
 
-    const loadPromises = shuffledScreenshots.map(src => {
+    const loadPromises = selectedScreenshots.map((src, index) => {
         return new Promise((resolve) => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = `Screenshot`;
-            img.loading = 'lazy';
-            img.style.background = '#f0f0f0';
-            img.onload = resolve;
-            img.onerror = () => resolve();  // 忽略加载失败，继续流程
+            let slide = existingSlides[index];
+            if (!slide) {
+                slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                screenshotWrapper.appendChild(slide);
+            }
 
-            const slide = document.createElement('div');
-            slide.className = 'swiper-slide';
-            slide.appendChild(img);
-            screenshotWrapper.appendChild(slide);
+            let img = slide.querySelector('img');
+            if (!img) {
+                img = document.createElement('img');
+                slide.appendChild(img);
+            }
+
+            const finish = () => resolve();
+            const currentSrc = img.getAttribute('src');
+
+            img.alt = 'pap.er app screenshot';
+            img.loading = index === 0 ? 'eager' : 'lazy';
+            img.decoding = 'async';
+            img.style.background = '#f0f0f0';
+            img.onload = finish;
+            img.onerror = finish;
+
+            if (currentSrc === src && img.complete) {
+                resolve();
+                return;
+            }
+
+            img.src = src;
+            if (img.complete) {
+                resolve();
+            }
         });
     });
 
+    for (let i = selectedScreenshots.length; i < existingSlides.length; i++) {
+        existingSlides[i].remove();
+    }
+
     await Promise.all(loadPromises);
-    swiper.update();  // 使用传递进来的 swiper 实例
-    console.log('随机截图加载完成');
+    swiper.update();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -195,8 +233,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-
             item.classList.toggle('active');
 
             if (item.classList.contains('active')) {
@@ -216,7 +252,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const defaultLang = getDefaultLanguage();
         changeLanguage(defaultLang);
         initLanguageSelector();
-        await initNavbarToggle();
+        initNavbarToggle();
         await initSwiper();
 
         let reviews = await fetchAppReviews();
